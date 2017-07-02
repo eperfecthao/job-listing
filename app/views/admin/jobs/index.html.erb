@@ -7,7 +7,6 @@
       <th>标题</th>
       <th>添加时间</th>
       <th colspan="2">管理</th>
-      <th>状态</th>
     </tr>
   </thead>
 
@@ -15,20 +14,15 @@
     <% @jobs.each do |job| %>
       <tr>
         <td>
+          <%= render_job_status(job) %>
           <%= job.title %>
         </td>
         <td>
           <%= time_ago_in_words(job.created_at) %> ago
         </td>
         <td>
-          <%= link_to "Edit", edit_admin_job_path(job), class: "btn btn-default" %>
-        </td>
-        <td>
-          <%= link_to "Delete", admin_job_path(job), method: :delete,
-          class: "btn btn-default", data: {confirm: "你确定吗?"} %>
-        </td>
-        <td>
-          <%= render_job_status(job) %>
+          <%= link_to "Edit", edit_admin_job_path(job) %>|
+          <%= link_to "Delete", admin_job_path(job), method: :delete, data: {confirm: "你确定吗?"} %>
         </td>
       </tr>
     <% end %>
