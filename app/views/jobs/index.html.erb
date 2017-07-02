@@ -7,6 +7,7 @@
     <tr>
       <th>标题</th>
       <th>描述</th>
+      <th>工作更新时间</th>
     </tr>
   </thead>
     <% @jobs.each do |job|  %>
@@ -16,6 +17,9 @@
         </td>
         <td>
           <%= job.description %>
+        </td>
+        <td>
+          <%= time_ago_in_words(job.created_at) %>
         </td>
       </tr>
     <% end %>

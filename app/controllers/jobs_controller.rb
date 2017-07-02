@@ -2,7 +2,7 @@ class JobsController < ApplicationController
   before_action :authenticate_user!
 
   def index
-    @jobs = Job.publish!
+    @jobs = Job.publish!.recent
   end
 
   def show
