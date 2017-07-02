@@ -1,12 +1,13 @@
 <h1>Jobs</h1>
 
 
-
 <table class="table table-bordered">
   <thead>
     <tr>
       <th>标题</th>
       <th>描述</th>
+      <th>薪资下限</th>
+      <th>薪资上限</th>
       <th>工作更新时间</th>
     </tr>
   </thead>
@@ -19,7 +20,13 @@
           <%= job.description %>
         </td>
         <td>
-          <%= time_ago_in_words(job.created_at) %>
+          <%= job.wage_lower_bound %>
+        </td>
+        <td>
+          <%= job.wage_upper_bound %>
+        </td>
+        <td>
+          <%= time_ago_in_words(job.created_at) %> ago
         </td>
       </tr>
     <% end %>
