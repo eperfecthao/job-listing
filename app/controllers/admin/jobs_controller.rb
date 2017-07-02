@@ -3,7 +3,7 @@ class Admin::JobsController < ApplicationController
   layout "admin"
 
   before_action :authenticate_user!
-  before_action :set_job, only: [:show, :edit, :update, :destroy]
+  before_action :set_job, only: [:show, :edit, :update, :destroy, :publish, :hidden]
   before_action :require_is_admin
 
   def index
@@ -42,6 +42,16 @@ class Admin::JobsController < ApplicationController
   def destroy
     @job.destroy
     redirect_to admin_jobs_path, alert: "删除工作成功"
+  end
+
+  def publish
+    @job.publish!
+    redirect_to :back
+  end
+
+  def hidden
+    @job.hide!
+    redirect_to :back
   end
 
   private

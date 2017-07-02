@@ -5,5 +5,15 @@ class Job < ApplicationRecord
   validates_presence_of :wage_upper_bound
 
   scope :recent, -> {order("created_at DESC")}
-  scope :publish!, -> { where(:is_hidden => false)}
+  scope :publish_status!, -> { where(:is_hidden => false)}
+
+  def publish!
+    self.is_hidden = false
+    self.save
+  end
+
+  def hide!
+    self.is_hidden = true
+    self.save
+  end
 end

@@ -6,4 +6,5 @@ module Admin::JobsHelper
       content_tag(:span, "", :class => "fa fa-globe")
     end
   end
+
 end

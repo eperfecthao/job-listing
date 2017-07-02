@@ -7,6 +7,7 @@
       <th>标题</th>
       <th>添加时间</th>
       <th colspan="2">管理</th>
+      <th>状态</th>
     </tr>
   </thead>
 
@@ -15,7 +16,7 @@
       <tr>
         <td>
           <%= render_job_status(job) %>
-          <%= job.title %>
+          <%= link_to job.title, admin_job_path(job) %>
         </td>
         <td>
           <%= time_ago_in_words(job.created_at) %> ago
@@ -23,6 +24,13 @@
         <td>
           <%= link_to "Edit", edit_admin_job_path(job) %>|
           <%= link_to "Delete", admin_job_path(job), method: :delete, data: {confirm: "你确定吗?"} %>
+        </td>
+        <td>
+          <% if job.is_hidden %>
+            <%= link_to "Publish", publish_admin_job_path(job), method: :post, class: "btn btn-default" %>
+          <% else %>
+            <%= link_to "Hidden", hidden_admin_job_path(job), method: :post, class: "btn btn-default" %>
+          <% end %>
         </td>
       </tr>
     <% end %>

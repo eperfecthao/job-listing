@@ -13,7 +13,7 @@
     <% @jobs.each do |job|  %>
       <tr>
         <td>
-          <%= job.title %>
+          <%= link_to job.title, job_path(job) %>
         </td>
         <td>
           <%= job.description %>
