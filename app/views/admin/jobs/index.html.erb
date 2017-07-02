@@ -5,11 +5,9 @@
   <thead>
     <tr>
       <th>标题</th>
-      <th>描述</th>
       <th>添加时间</th>
       <th colspan="2">管理</th>
       <th>状态</th>
-      <th>联系方式</th>
     </tr>
   </thead>
 
@@ -18,9 +16,6 @@
       <tr>
         <td>
           <%= job.title %>
-        </td>
-        <td>
-          <%= job.description %>
         </td>
         <td>
           <%= time_ago_in_words(job.created_at) %> ago
@@ -34,9 +29,6 @@
         </td>
         <td>
           <%= render_job_status(job) %>
-        </td>
-        <td>
-          <%= job.contact_email %>
         </td>
       </tr>
     <% end %>
