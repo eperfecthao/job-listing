@@ -5,4 +5,6 @@ class Resume < ApplicationRecord
   mount_uploader :attachment, AttachmentUploader
 
   validates_presence_of :content
+
+  scope :recent, -> {order("created_at DESC")}
 end
